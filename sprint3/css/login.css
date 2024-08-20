@@ -4,6 +4,7 @@
     text-align: center;
     margin-top: 80px;
     color: #202020;
+    margin-bottom: 100px;
 }
 
 .containerLogin label{
@@ -35,3 +36,5 @@
   button:hover {
     opacity: 0.8;
   }
+
+ 
