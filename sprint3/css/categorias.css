@@ -1,9 +1,3 @@
-.site-footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    
-}
 
 .imginstrumentos{
     height: 200px;
@@ -11,24 +5,30 @@
 }
 
 .titulo-categorias{
-    margin-left: 40px;
-    margin-top: 40px;
+    text-align: center;
+    margin-top: 50px;
     margin-bottom: 40px;
     color: #202020;
 }
 
 .containerBody{
     margin-left: 40px;
+    margin-right: 40px;
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     align-content: space-around;
 }
 
 .containerInstrumento{
-    width: 25%;
+    width: 33.3%;
     text-align: center;
     cursor: pointer;
+    color: #202020;
+    margin-bottom: 20px;
 }
+
+
 
