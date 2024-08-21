@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/categorias.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logopng.png" alt="SoundSphere Logo">
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Digite aqui o que procura...">
+                <button>Buscar</button>
+            </div>
+            <div class="user-actions">
+                <a href="login.html">
+                    <img src="img/imguser-icon.png.png" alt="Login">
+                </a>
+                <a href="carrinho.html">
+                    <img src="img/cart-icon.png.png" alt="Carrinho">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="category-bar">
+        <ul>
+            <li><a href="marcas.html">Marcas</a></li>
+            <li><a href="promocao.html">Promoção</a></li>
+            <li><a href="cordas.html">Cordas</a></li>
+            <li><a href="teclas.html">Teclas</a></li>
+            <li><a href="percussao.html">Percussão</a></li>
+            <li><a href="acessorios.html">Acessórios</a></li>
+            <li><a href="audio.html">Áudio</a></li>
+        </ul>
+    </nav>
+
+    <div class="cart-container">
+        <h1 class="titulo-categorias">Meu Carrinho</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Preço unitário</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="img/IMG_0206.jpg" alt="Amplificador de Voz" width="50"> Amplificador de Voz</td>
+                    <td class="unit-price">1327.53</td>
+                    <td><input type="number" value="1" class="quantity" onchange="updateCart()"></td>
+                    <td class="subtotal">1327.53</td>
+                    <td><button onclick="removeItem(this)">Remover</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="summary">
+            <p>Subtotal: R$ <span id="subtotal">1327.53</span></p>
+            <p>Total: R$ <span id="total">1327.53</span></p>
+            <p>Via Boleto Bancário por R$ <span id="boleto">1261.15</span> com 5% de desconto ou em até 12x de R$ <span id="parcelas">110.62</span> sem juros</p>
+            <button>Finalizar compra</button>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Contato</h3>
+            <p>Email: contato@soundsphere.com.br</p>
+            <p>Telefone: (11) 1234-5678</p>        
+          </div>
+          <div class="footer-section">
+            <h3>Links Úteis</h3>
+            <ul>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Política de Privacidade</a></li>
+              <li><a href="#">Termos de Serviço</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Redes Sociais</h3>
+            <a href="#" class="social-icon"><img src="img/facebook_icon.png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="img/instagram_icon.png" alt="Instagram"></a>
+            <a href="#" class="social-icon"><img src="img/youtube_icon.png" alt="YouTube"></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 SoundSphere. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+
+    <script>
+        function updateCart() {
+            let subtotal = 0;
+            document.querySelectorAll('.containerInstrumento').forEach(item => {
+                const unitPrice = parseFloat(item.querySelector('.unit-price').textContent);
+                const quantity = parseInt(item.querySelector('.quantity').value);
+                const itemSubtotal = unitPrice * quantity;
+                item.querySelector('.subtotal').textContent = itemSubtotal.toFixed(2);
+                subtotal += itemSubtotal;
+            });
+
+            const total = subtotal;
+            const boleto = subtotal * 0.95;
+            const parcelas = subtotal / 12;
+
+            document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+            document.getElementById('total').textContent = total.toFixed(2);
+            document.getElementById('boleto').textContent = boleto.toFixed(2);
+            document.getElementById('parcelas').textContent = parcelas.toFixed(2);
+        }
+
+        function removeItem(button) {
+            const item = button.closest('.containerInstrumento');
+            item.remove();
+            updateCart();
+        }
+
+        document.addEventListener('DOMContentLoaded', updateCart);
+    </script>
+</body>
+</html>
