@@ -1,0 +1,40 @@
+
+
+.containerLogin{
+    text-align: center;
+    margin-top: 80px;
+    color: #202020;
+    margin-bottom: 100px;
+}
+
+.containerLogin label{
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+
+.containerLogin input{
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+  
+  .containerLogin button {
+    background-color: #2b023d;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+  }
+  
+  
+  button:hover {
+    opacity: 0.8;
+  }
+
+ 
