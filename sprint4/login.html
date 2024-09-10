@@ -55,45 +55,67 @@
     <div class="containerLogin">
         <h1>Login</h1>
         <form id="formLogin">
-            <div>
-                <label for="username" class="labelLogin">Usuário</label> <br>
+            <div class="form-group">
+                <label for="username">Email</label> <br>
                 <input type="text" id="username" name="username" >
+                <span class="error-msg" id="username-error"></span> 
             </div>
-            <div>
-                <label for="password" class="labelLogin">Senha</label> <br>
-                <input type="password" id="password" name="password" >
+            <div class="form-group">
+                <label for="password">Senha</label> <br>
+                <input type="password" id="password" name="password">
+                <span class="error-msg" id="password-error"></span> 
             </div>
-            <div>
+            <div class="form-group">
                 <button type="submit">Entrar</button>
             </div>
         </form>
         <h5>Ainda não tem conta? Cadastre-se <a href='cadastro.html'>aqui</a></h5>
     </div>
-
+    
+    
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .error-msg {
+            color: red;
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+    
     <script>
         document.getElementById('formLogin').addEventListener('submit', function(event) {
             
             event.preventDefault();
     
-           
+            
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
     
-            // Validação de nome de usuário
-            if (username === "") {
-                alert("Por favor, insira um nome de usuário.");
-                return;
-            }
+           
+            document.getElementById('username-error').innerText = "";
+            document.getElementById('password-error').innerText = "";
     
-            // Validação de senha
-            if (password === "") {
-                alert("Por favor, insira sua senha.");
-                return;
-            }
+            let formValido = true;
     
-            // Se todas as validações passarem
-            alert("Login realizado com sucesso!");
             
+            if (!username.includes('@') || !username.endsWith('.com')) {
+                formValido = false;
+                document.getElementById('username-error').innerText = "Por favor, insira um email válido.";
+            }
+    
+        
+            if (password === "") {
+                formValido = false;
+                document.getElementById('password-error').innerText = "A senha não pode estar vazia.";
+            }
+    
+            
+            if (formValido) {
+                alert("Login realizado com sucesso!");
+            }
         });
     </script>
 
