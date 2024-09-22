@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundSphere</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/categorias.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="script.js"></script>
+    
+</head>
+<body>
+    <!-- Header principal -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logopng.png" alt="SoundSphere Logo">
+                </a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Digite aqui o que procura...">
+                <button>Buscar</button>
+            </div>
+            <div class="user-actions">
+                <a href="login.html"> <!-- Link para parte de login -->
+                    <i class="user-icon"></i>
+                    <img src="img/imguser-icon.png.png">
+                </a>
+                <a href="carrinho.html"> <!-- Link para o carrinho -->
+                    <i class="cart-icon"></i> 
+                    <img src="img/cart-icon.png.png">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categorias -->
+    <nav class="category-bar">
+        <ul>
+            <li><a href="marcas.html">Marcas</a></li> <!-- Link para marcas -->
+            <li><a href="promocao.html">Promoção</a></li> <!-- Link para promoção -->
+            <li><a href="cordas.html">Cordas</a></li> <!-- Link para cordas -->
+            <li><a href="teclas.html">Teclas</a></li> <!-- Link para teclas -->
+            <li><a href="percussao.html">Percussão</a></li> <!-- Link para percussão -->
+            <li><a href="acessorios.html">Acessórios</a></li> <!-- Link para acessórios -->
+            <li><a href="audio.html">Áudio</a></li> <!-- Link para áudio -->
+        </ul>
+    </nav>
+
+    <!-- Conteudo da categoria -->
+
+
+    
+    <div class="containerLogin">
+        <h1>Cadastre-se conosco!</h1>
+        <form id="formCadastro">
+            <div class="form-group">
+                <label for="email">Email</label> <br>
+                <input type="text" id="email" name="email">
+                <span class="error-msg" id="email-error"></span> 
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label> <br>
+                <input type="password" id="senha" name="senha">
+                <span class="error-msg" id="senha-error"></span> 
+            </div>
+            <div class="form-group">
+                <label for="confirmar-senha">Confirmar Senha</label> <br>
+                <input type="password" id="confirmar-senha" name="confirmar-senha">
+                <span class="error-msg" id="confirmar-senha-error"></span> 
+            </div>
+    
+            <div class="form-group">
+                <button type="submit">Criar Conta</button>
+            </div> <br>
+        </form>
+    </div>
+    
+     
+    
+    <style>
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .error-msg {
+            color: red;
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+        }
+    </style>
+    
+    <script>
+        document.getElementById('formCadastro').addEventListener('submit', function(event) {
+            
+            event.preventDefault();
+    
+            
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+    
+            
+            document.getElementById('email-error').innerText = "";
+            document.getElementById('senha-error').innerText = "";
+            document.getElementById('confirmar-senha-error').innerText = "";
+    
+            let formValido = true;
+    
+            // Validação de email 
+            if (!email.includes('@') || !email.endsWith('.com')) {
+                formValido = false;
+                document.getElementById('email-error').innerText = "Por favor, insira um email válido.";
+            }
+    
+            // Validação de senha
+            if (senha === "") {
+                formValido = false;
+                document.getElementById('senha-error').innerText = "A senha não pode estar vazia.";
+            } else if (senha.length <= 10) {
+                formValido = false;
+                document.getElementById('senha-error').innerText = "A senha deve ter mais de 10 caracteres.";
+            }
+    
+            // Verificação de confirmação da senha
+            if (senha !== confirmarSenha) {
+                formValido = false;
+                document.getElementById('confirmar-senha-error').innerText = "As senhas não coincidem.";
+            }
+    
+            
+            if (formValido) {
+                alert("Cadastro realizado com sucesso!");
+            }
+        });
+    </script>
+
+
+
+    <!-- Footer -->
+
+    <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Contato</h3>
+            <p>Email: contato@soundsphere.com.br</p>
+            <p>Telefone: (11) 1234-5678</p>        
+          </div>
+          <div class="footer-section">
+            <h3>Links Úteis</h3>
+            <ul>
+              <li><a href="#">Sobre Nós</a></li>
+              <li><a href="#">Política de Privacidade</a></li>
+              <li><a href="#">Termos de Serviço</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Redes Sociais</h3>
+            <a href="#" class="social-icon"><img src="img/facebook_icon.png" alt="Facebook"></a>
+            <a href="#" class="social-icon"><img src="img/instagram_icon.png" alt="Instagram"></a>
+            <a href="#" class="social-icon"><img src="img/youtube_icon.png" alt="YouTube"></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2024 SoundSphere. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </body>
+    </html>
+    
